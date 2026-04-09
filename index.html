@@ -1,151 +1,278 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación Especial</title>
-    <style>
-        :root {
-            --color-dorado: #c5a059;
-            --fondo-crema: #fdfaf6;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: var(--fondo-crema);
-            font-family: 'Times New Roman', serif;
-            overflow: hidden;
-        }
-
-        .escena {
-            position: relative;
-            width: 400px;
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #sello {
-            position: absolute;
-            z-index: 10;
-            width: 200px;
-            cursor: pointer;
-            transition: opacity 1s ease, transform 1.5s ease;
-        }
-
-        .girar-desvanecer {
-            transform: rotate(360deg) scale(1.2);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .sobre {
-            position: absolute;
-            width: 200%;
-            transition: opacity 0.8s ease;
-        }
-
-        #sobre-abierto {
-            opacity: 0;
-        }
-
-        .tarjeta {
-            position: absolute;
-            width: 75%;
-            height: 150px;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            border: 1px solid #eee;
-            z-index: 2;
-            transform: translateY(0);
-            opacity: 0;
-            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
-        }
-
-        .tarjeta h2 {
-            color: var(--color-dorado);
-            font-style: italic;
-            font-weight: lighter;
-            font-size: 1.8rem;
-        }
-
-        .subir-tarjeta {
-            transform: translateY(-120px);
-            opacity: 1;
-        }
-
-        #btn-continuar {
-            position: absolute;
-            bottom: -80px;
-            padding: 10px 30px;
-            background-color: var(--color-dorado);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 1s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-        }
-
-        .mostrar-boton {
-            opacity: 1 !important;
-        }
-
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Invitación — Cami & Sebas</title>
+    <link rel="stylesheet" href="styles5.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="format-detection" content="telephone=no">
 </head>
+
 <body>
-
-    <div class="escena">
-        <img src="src/sello.png" id="sello" alt="Sello de cera" onclick="iniciarAnimacion()">
-
-        <img src="src/sobre-cerrado.png" id="sobre-cerrado" class="sobre" alt="Sobre cerrado">
-
-        <img src="src/sobre-abierto.png" id="sobre-abierto" class="sobre" alt="Sobre abierto">
-
-        <div class="tarjeta" id="tarjeta">
-            <h2>Eres un invitado especial</h2>
+    
+    <div id="intro-overlay">
+        <div class="intro-bg"></div>
+        <div class="intro-content">
+            <img src="fotos5/Logo.webp" id="intro-logo" alt="Cami & Sebas">
         </div>
-
-        <button id="btn-continuar" onclick="window.location.href='main.html'">Continuar</button>
     </div>
 
-    <script>
-        function iniciarAnimacion() {
-            const sello = document.getElementById('sello');
-            const sobreCerrado = document.getElementById('sobre-cerrado');
-            const sobreAbierto = document.getElementById('sobre-abierto');
-            const tarjeta = document.getElementById('tarjeta');
-            const boton = document.getElementById('btn-continuar');
+    <div id="main-content" class="hidden">
 
-            sello.classList.add('girar-desvanecer');
+        <audio id="miMusica" loop>
+            <source src="fotos5/cancion.mp3" type="audio/mpeg">
+        </audio>
 
-            setTimeout(() => {
-                sobreCerrado.style.opacity = '0';
-                sobreAbierto.style.opacity = '1';
-            }, 1000);
+        <button id="btnMusica" class="boton-flotante">
+            <span id="texto">Reproducir canción</span>
+        </button>
+        
 
-            setTimeout(() => {
-                tarjeta.classList.add('subir-tarjeta');
-            }, 1800);
+    <!-- ── 1. HERO ── -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Cami<span class="hero-ampersand">&amp;</span>Sebas</h1>
+            <p class="hero-date">14 de noviembre &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; 12:00 PM</p>
+        </div>
+    </header>
 
-            setTimeout(() => {
-                boton.classList.add('mostrar-boton');
-            }, 2800);
-        }
-    </script>
+    <!-- ── 2. NUESTRA HISTORIA ── -->
+    <section class="story-section">
+        <div class="reveal">
+            <div class="divider-line"><span>&#10044;</span></div>
+            <h2 class="section-title" style="margin-top:22px;">Nuestra historia</h2>
+        </div>
+        <div class="story-text reveal reveal-delay-1">
+            <p>Nuestra historia comenzó con un morral de colegio en Duitama y terminó convirtiéndose en un viaje sin fecha de regreso.</p>
+            <p>Pasamos de los cuadernos y las trasnochadas de la universidad, a cargar maletas por el mundo y levantar discos en el box.</p>
+            <p>Tras más de una década de risas, kilómetros recorridos y el amor de nuestros peludos, decidimos que ya es hora de hacer la parada más importante de nuestro itinerario: volver a nuestra tierrita para celebrar donde todo empezó.</p>
+            <p class="story-signature">– Cami &amp; Sebas</p>
+        </div>
+    </section>
+
+    <!-- ── 3. PARA NUESTROS INVITADOS ── -->
+    <section class="story-section">
+        <div class="reveal">
+            <div class="divider-line"><span>&#10044;</span></div>
+            <h2 class="section-title" style="margin-top:22px;">Para nuestros invitados</h2>
+        </div>
+        <div class="story-text reveal reveal-delay-1">
+            <p>Nuestro viaje hace una parada especial para celebrar nuestra unión. Queremos compartir con ustedes este momento íntimo y muy nuestro, diseñado para disfrutarse solo entre adultos.</p>
+            <p>¡Gracias por ser parte del capítulo más especial de nuestro recorrido!</p>
+            <p>¿Nos acompañas?</p>
+        </div>
+    </section>
+
+    <!-- ── 4. NUESTRO COMPROMISO — Collage vertical ── -->
+    <section class="collage-section">
+        <div class="reveal">
+            <div class="divider-line"><span>&#10044;</span></div>
+            <h2 class="section-title" style="margin-top:22px;">Nuestro compromiso</h2>
+        </div>
+        <div class="collage reveal reveal-delay-1">
+            <div class="collage-row">
+                <img src="fotos5/2.webp" alt="Cami & Sebas">
+                <img src="fotos5/3.webp" alt="Cami & Sebas">
+            </div>
+            <div class="collage-full">
+                <img src="fotos5/5.webp" alt="Cami & Sebas">
+            </div>
+            <div class="collage-row">
+                <img src="fotos5/6.webp" alt="Cami & Sebas">
+                <img src="fotos5/1.webp" alt="Cami & Sebas">
+            </div>
+            <div class="collage-full">
+                <img src="fotos5/7.webp" alt="Cami & Sebas">
+            </div>
+            <div class="collage-row">
+                <img src="fotos5/8.webp" alt="Cami & Sebas">
+                <img src="fotos5/9.webp" alt="Cami & Sebas">
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 5. CUENTA REGRESIVA ── -->
+    <section class="countdown-section">
+        <div class="reveal">
+            <h2 class="section-title">Cuenta regresiva</h2>
+            <p class="subtitle">para el día de nuestro matrimonio</p>
+        </div>
+        <div id="timer" class="reveal reveal-delay-1">
+            <div class="time-box"><span id="days">00</span><label>Días</label></div>
+            <div class="time-box"><span id="hours">00</span><label>Horas</label></div>
+            <div class="time-box"><span id="minutes">00</span><label>Minutos</label></div>
+            <div class="time-box"><span id="seconds">00</span><label>Segundos</label></div>
+        </div>
+        <p class="wedding-date reveal reveal-delay-2">14 de Noviembre, 2026 &nbsp;·&nbsp; 12:00 PM</p>
+    </section>
+
+
+    <!-- ── 6. NUESTRO GRAN DÍA ── -->
+    <section class="timeline-section">
+        <div class="reveal">
+            <h2 class="section-title">Nuestro gran día</h2>
+            <p class="section-subtitle">14 de Noviembre, 2026</p>
+        </div>
+
+        <div class="timeline-grid">
+            <div class="tl-item reveal">
+                <img src="fotos5/bienvenidos.png" alt="Llegada">
+                <p class="tl-hora">11:30 AM – Llegada de invitados</p>
+            </div>
+            <div class="tl-item reveal reveal-delay-1">
+                <img src="fotos5/anillos.png" alt="Ceremonia">
+                <p class="tl-hora">12:00 PM – Ceremonia</p>
+            </div>
+            <div class="tl-item reveal reveal-delay-2">
+                <img src="fotos5/bebida.png" alt="Cóctel">
+                <p class="tl-hora">1:00 PM – Cóctel</p>
+            </div>
+            <div class="tl-item reveal reveal-delay-1">
+                <img src="fotos5/cena.PNG" alt="Recepción">
+                <p class="tl-hora">2:30 PM – Recepción</p>
+            </div>
+            <div class="tl-item reveal reveal-delay-2">
+                <img src="fotos5/fiesta.png" alt="Festival">
+                <p class="tl-hora">4:30 PM – Festival</p>
+            </div>
+            <div class="tl-item reveal reveal-delay-3">
+                <img src="fotos5/finalizacion.png" alt="Finalización">
+                <p class="tl-hora">9:40 PM – Finalización</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 7. CÓDIGO DE VESTIMENTA ── -->
+    <section class="dresscode-section">
+        <div class="reveal">
+            <h2 class="section-title">Código de vestimenta</h2>
+        </div>
+        <div class="dresscode-container reveal reveal-delay-1">
+            <p class="dresscode-intro">Vestimenta formal</p>
+            <div class="dresscode-image">
+                <img src="fotos5/vestimenta.PNG" alt="Inspiración Vestimenta" style="border-radius:12px;">
+            </div>
+            <a href="https://pin.it/2wCH37pOC" target="_blank" rel="noopener noreferrer" class="btn-inspiracion">Abre este link para inspiración</a>
+        </div>
+    </section>
+
+
+
+    <!-- ── 8. HONEYMOON FUND ── -->
+    <div class="tarjeta" id="tarjeta">
+        <div class="contenido-tarjeta">
+            <div class="lluvia-sobres reveal">
+                <h2 class="lluvia-sobres-titulo">Nuestro Honeymoon Fund</h2>
+                <p class="lluvia-sobres-texto">Tu presencia es el mejor regalo, pero si deseas apoyarnos en nuestra siguiente aventura, puedes hacerlo escaneando este código QR o, si lo prefieres, a través del sistema de sobres.</p>
+                <div class="honeymoon-qr-placeholder" style="width:200px;height:200px;border:2px dashed rgba(255,255,255,0.4);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:24px auto;color:rgba(255,255,255,0.5);font-family:var(--font-body);font-size:0.85rem;">
+                    <!-- TODO: Reemplazar con imagen QR cuando la envíen -->
+                    QR Code
+                </div>
+                <p class="lluvia-sobres-texto">¡Gracias por acompañarnos en este inicio!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── 9. UBICACIÓN ── -->
+    <section class="location-section">
+        <div class="reveal">
+            <h2 class="section-title">Ubicación</h2>
+            <p class="location-name"><b>Villa Eucalyptus, Nobsa, Boyacá</b></p>
+        </div>
+
+        <div class="location-image reveal reveal-delay-1">
+            <img src="fotos5/location.jpg" alt="Villa Eucalyptus" class="hacienda-img">
+        </div>
+
+        <div class="map-container reveal reveal-delay-2">
+            <!-- TODO: Reemplazar con el embed de Google Maps de Villa Eucalyptus -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.3862845716408!2d-72.9773412!3d5.8009938000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a47640a2977d9%3A0x134258d0af866fda!2sHospedaje%20Campestre%20Villa%20Eucalyptus!5e0!3m2!1ses-419!2sco!4v1775734131100!5m2!1ses-419!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+    </section>
+
+    <!-- ── 10. RSVP ── -->
+    <section class="rsvp-section">
+        <div class="reveal">
+            <h2 class="section-title">Confirma tu asistencia</h2>
+            <p class="section-subtitle">¡Esperamos contar contigo!</p>
+        </div>
+
+        <div class="rsvp-container reveal reveal-delay-1">
+            <form id="rsvp-form" class="styled-form">
+                <input type="hidden" name="couple_name" value="Cami & Sebas">
+
+                <div class="input-row">
+                    <div class="form-group">
+                        <label for="from_name">Nombres *</label>
+                        <input type="text" name="from_name" id="from_name" required placeholder="Tu respuesta">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Apellidos *</label>
+                        <input type="text" name="last_name" id="last_name" required placeholder="Tu respuesta">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Edad *</label>
+                    <input type="number" name="age" id="age" required placeholder="Tu respuesta">
+                </div>
+
+                <div class="form-group">
+                    <label for="allergies">Alergias Alimentarias</label>
+                    <textarea name="allergies" id="allergies" rows="3"
+                        placeholder="Si no tienes, escribe 'Ninguna'"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="main-label">¿Vas a asistir? *</label>
+                    <div class="radio-options">
+                        <label class="radio-container">
+                            <input type="radio" name="attendance" value="Sí" required>
+                            <span class="checkmark"></span>
+                            Sí, ¡allí estaré!
+                        </label>
+                        <label class="radio-container">
+                            <input type="radio" name="attendance" value="No">
+                            <span class="checkmark"></span>
+                            No, me es imposible
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" id="button-send" class="btn-primary">Enviar</button>
+            </form>
+        </div>
+
+    </section>
+
+    <!-- ── SCRIPTS ── -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="scriptmain5.js"></script>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer-boda">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="fotos5/dosa.png" alt="Logo" class="logo-footer-icon">
+                <img src="fotos5/dosa2.png" alt="Dosa Eventos" class="logo-footer-name">
+            </div>
+            <div class="footer-info">
+                <div class="footer-section">
+                    <span class="nombre-planner">Alejandra Riveros</span>
+                    <span class="rol-planner">Wedding Planner</span>
+                </div>
+                <div class="footer-section">
+                    <span class="nombre-planner">Celular</span>
+                    <span class="rol-planner" style="text-decoration: none; color: #a1a1a1;">321&nbsp;4603514</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div><!-- fin #main-content -->
 </body>
+
 </html>
