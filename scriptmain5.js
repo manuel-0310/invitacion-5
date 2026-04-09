@@ -92,7 +92,7 @@ function continuarIntro() {
 }
 
 // Auto-continue 2 seconds after logo finishes fading in
-setTimeout(continuarIntro, 2000);
+setTimeout(continuarIntro, 3000);
 
 /* ============================================================
    MUSIC — start on first scroll interaction
