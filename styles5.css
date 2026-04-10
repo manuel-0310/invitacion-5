@@ -316,7 +316,7 @@ h2.section-title {
 }
 
 .wedding-date {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     color: var(--texto);
     opacity: 0.4;
     letter-spacing: 3px;
@@ -753,7 +753,7 @@ h2.section-title {
     }
 
     .hero::before {
-        background: url('fotos5/flores.jpg') no-repeat center top / cover;
+        background: url('fotos5/1.webp') no-repeat center top / cover;
         height: 62%;
         bottom: auto;
         -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
