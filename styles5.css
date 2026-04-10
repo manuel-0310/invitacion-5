@@ -24,7 +24,7 @@ img  { max-width: 100%; height: auto; display: block; }
 body {
     margin: 0;
     font-family: var(--font-body);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--texto);
     background: var(--blanco);
@@ -115,6 +115,31 @@ body {
     text-shadow: none;
 }
 
+/* ── Scroll arrow ── */
+.hero-scroll-arrow {
+    position: absolute;
+    bottom: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    animation: scrollBounce 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.hero-scroll-arrow span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-right: 2.5px solid rgba(255,255,255,0.75);
+    border-bottom: 2.5px solid rgba(255,255,255,0.75);
+    transform: rotate(45deg);
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0);    opacity: 0.65; }
+    50%       { transform: translateX(-50%) translateY(9px); opacity: 1;    }
+}
+
 .divider-line {
     display: flex;
     align-items: center;
@@ -155,7 +180,7 @@ h2.section-title {
 
 .section-subtitle, .subtitle {
     font-style: italic;
-    font-size: 1rem;
+    font-size: 0.88rem;
     font-weight: 500;
     color: var(--texto);
     opacity: 0.45;
@@ -173,11 +198,11 @@ h2.section-title {
 }
 
 .story-text {
-    max-width: 620px;
-    margin: 0 auto;
-    line-height: 2.1;
-    font-size: 1.12rem;
-    font-weight: 400;
+    max-width: 540px;
+    margin: 36px auto 0;
+    line-height: 1.85;
+    font-size: 0.88rem;
+    font-weight: 300;
     color: var(--texto);
     text-align: center;
     font-family: var(--font-body);
@@ -197,55 +222,63 @@ h2.section-title {
     padding: 90px var(--pad);
 }
 
-.collage {
-    max-width: 700px;
+/* ── Slideshow ── */
+.slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 20px 70px rgba(0,0,0,0.35);
 }
 
-.collage-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.collage-row img,
-.collage-full img {
+.slideshow img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 14px;
-    display: block;
+    opacity: 0;
+    transition: opacity 1.2s ease;
 }
 
-.collage-row img {
-    aspect-ratio: 1 / 1;
+.slideshow img.active { opacity: 1; }
+
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 32px;
+    height: 80px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
-.collage-full img {
-    aspect-ratio: 3 / 4;
-    max-height: 600px;
-}
+.slide-prev { left: 10px; }
+.slide-next { right: 10px; }
+.slide-arrow:hover { background: rgba(255,255,255,0.22); }
 
 .countdown-section {
-    background: var(--navy);
+    background: var(--gris-suave);
     padding: 90px var(--pad);
-    position: relative;
-    overflow: hidden;
 }
 
-.countdown-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(107,129,112,0.12) 0%, transparent 55%);
-    pointer-events: none;
-}
-
-.countdown-section h2.section-title { color: #fff; }
-.countdown-section .subtitle { color: rgba(255,255,255,0.55); opacity: 1; }
+.countdown-section h2.section-title { color: var(--azul); }
+.countdown-section .subtitle { color: var(--texto); opacity: 0.45; }
 
 #timer {
     display: grid;
@@ -256,8 +289,8 @@ h2.section-title {
 }
 
 .time-box {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.15);
+    background: var(--gris-medio);
+    border: none;
     padding: 24px 8px 20px;
     border-radius: 14px;
     text-align: center;
@@ -266,15 +299,16 @@ h2.section-title {
 .time-box span {
     display: block;
     font-size: clamp(2rem, 5vw, 3rem);
-    color: #fff;
+    color: var(--navy);
     font-weight: 300;
     line-height: 1;
+    font-family: var(--font-serif);
 }
 
 .time-box label {
     font-size: 0.6rem;
     letter-spacing: 3px;
-    color: rgba(255,255,255,0.6);
+    color: var(--azul);
     text-transform: uppercase;
     margin-top: 10px;
     display: block;
@@ -282,15 +316,15 @@ h2.section-title {
 }
 
 .wedding-date {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.45);
-    opacity: 1;
+    font-size: 0.85rem;
+    color: var(--texto);
+    opacity: 0.4;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
 .timeline-section {
-    background: var(--gris-suave);
+    background: var(--blanco);
     padding: 90px var(--pad);
 }
 
@@ -319,25 +353,25 @@ h2.section-title {
 }
 
 .tl-hora {
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
     color: var(--navy);
     margin: 0;
     text-align: left;
 }
 
 .dresscode-section {
-    background: var(--blanco);
+    background: var(--gris-suave);
     padding: 90px var(--pad);
 }
 
 .dresscode-container { max-width: 620px; margin: 0 auto; }
 
 .dresscode-intro {
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 300;
     margin-bottom: 28px;
     color: var(--texto);
     opacity: 0.7;
@@ -434,8 +468,8 @@ h2.section-title {
 
 .lluvia-sobres-texto {
     font-family: var(--font-body);
-    font-size: 1.05rem;
-    font-weight: 400;
+    font-size: 0.9rem;
+    font-weight: 300;
     line-height: 1.9;
     color: rgba(255,255,255,0.92);
     margin: 0;
@@ -553,7 +587,7 @@ h2.section-title {
     align-items: center;
     margin-bottom: 14px;
     cursor: pointer;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     user-select: none;
     gap: 12px;
     font-weight: 500;
@@ -741,6 +775,10 @@ h2.section-title {
         color: rgba(58,47,40,0.65);
         border-color: rgba(58,47,40,0.2);
     }
+
+    .hero-scroll-arrow span {
+        border-color: rgba(58,47,40,0.45);
+    }
     /* ---------------------------------------------------------------- */
 
     section { padding: 70px var(--pad); }
@@ -753,8 +791,7 @@ h2.section-title {
 
     .nombres { width: 55%; }
 
-    .collage { gap: 8px; }
-    .collage-row { gap: 8px; }
+    .slideshow { max-width: 100%; }
 
     .map-container iframe { height: 240px !important; }
 
@@ -774,10 +811,6 @@ h2.section-title {
     .time-box { padding: 18px 6px 16px; }
 
     .tl-item img { width: 56px; height: 56px; }
-    .tl-hora { font-size: 0.95rem; }
-
-    .collage-row img { border-radius: 10px; }
-    .collage-full img { border-radius: 10px; }
 
     .rsvp-container { padding: 28px 18px; }
 }

@@ -142,6 +142,30 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ============================================================
+   SLIDESHOW — navegación manual con flechas (fade transition)
+   ============================================================ */
+document.querySelectorAll('.slideshow').forEach(show => {
+    const imgs    = show.querySelectorAll('img');
+    const counter = show.querySelector('.slide-counter');
+    let idx = 0;
+
+    function updateSlide(newIdx) {
+        imgs[idx].classList.remove('active');
+        idx = newIdx;
+        imgs[idx].classList.add('active');
+        if (counter) counter.textContent = (idx + 1) + ' / ' + imgs.length;
+    }
+
+    show.querySelector('.slide-next').addEventListener('click', () => {
+        updateSlide((idx + 1) % imgs.length);
+    });
+
+    show.querySelector('.slide-prev').addEventListener('click', () => {
+        updateSlide((idx - 1 + imgs.length) % imgs.length);
+    });
+});
+
+/* ============================================================
    EMAILJS — RSVP form
    ============================================================ */
 (function () {
