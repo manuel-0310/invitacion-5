@@ -115,7 +115,6 @@ body {
     text-shadow: none;
 }
 
-/* ── Scroll arrow ── */
 .hero-scroll-arrow {
     position: absolute;
     bottom: 34px;
@@ -222,7 +221,6 @@ h2.section-title {
     padding: 90px var(--pad);
 }
 
-/* ── Slideshow ── */
 .slideshow {
     position: relative;
     width: 100%;
@@ -745,7 +743,6 @@ h2.section-title {
 }
 
 @media (max-width: 768px) {
-    /* ---- Hero mobile: flores photo fading into cream background ---- */
     .hero {
         background: #f0ebe4;
         align-items: flex-end;
@@ -779,8 +776,6 @@ h2.section-title {
     .hero-scroll-arrow span {
         border-color: rgba(58,47,40,0.45);
     }
-    /* ---------------------------------------------------------------- */
-
     section { padding: 70px var(--pad); }
     h2.section-title { font-size: 1.4rem; }
 
